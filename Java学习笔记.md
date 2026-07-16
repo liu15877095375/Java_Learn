@@ -59,3 +59,19 @@ final修饰的类为最终类，不能被继承，里面的方法也不能被重
 private私有方法、static静态方法、final最终方法不能被重写
 
 ![](C:\Users\29737\AppData\Roaming\marktext\images\2026-07-15-23-16-53-image.png)
+
+继承中构造方法的访问特点如图所示。子类不能继承父类的构造方法，但可以通过super调用，这句话是最关键的。
+
+![](C:\Users\29737\AppData\Roaming\marktext\images\2026-07-16-18-40-09-image.png)
+
+this关键字在内存的角度：表示的是当前方法的调用者的地址值。
+
+this ()是调用本类的其他构造方法，一般用在空参构造里，调用有参构造，然后达成属性初始赋值的目的。
+
+![](C:\Users\29737\AppData\Roaming\marktext\images\2026-07-16-18-48-02-image.png)
+
+如果子类中有多个构造方法的时候，不能用this()互相调用，一定要预留一个调用父类的构造方法。
+
+![](C:\Users\29737\AppData\Roaming\marktext\images\2026-07-16-18-52-08-image.png)
+
+get和set方法是可以继承父类的，父类有的，子类可以不用写了。
