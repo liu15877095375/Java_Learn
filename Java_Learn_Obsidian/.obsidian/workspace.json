@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "枚举类.md",
+                "file": "String类.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "枚举类"
+              "title": "String类"
             }
           }
         ]
@@ -182,12 +182,19 @@
   },
   "active": "e837e2c2656c4342",
   "lastOpenFiles": [
+    "StringBuilder.md",
+    "super关键字.md",
+    "String类.md",
+    "内部类总览.md",
+    "面向对象基础.md",
+    "匿名内部类.md",
+    "成员内部类.md",
+    "静态内部类.md",
     "局部内部类.md",
+    "枚举类.md",
     "get和set方法.md",
     "继承.md",
     "虚方法表.md",
-    "内部类总览.md",
-    "枚举类.md",
     "方法重写.md",
     "欢迎.md"
   ]
