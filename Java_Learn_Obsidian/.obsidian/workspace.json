@@ -74,7 +74,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "8d076f4c3a1daffa",
@@ -178,23 +179,31 @@
   },
   "active": "e837e2c2656c4342",
   "lastOpenFiles": [
+    "异常.md",
+    "多态.md",
+    "方法重写.md",
+    "instanceof关键字.md",
+    "数组.md",
+    "包.md",
+    "方法引用.md",
+    "Lambda表达式.md",
+    "Object类.md",
+    "get和set方法.md",
+    "final关键字.md",
+    "this关键字.md",
+    "super关键字.md",
+    "StringBuilder.md",
+    "main方法.md",
+    "泛型.md",
+    "首页.md",
+    "抽象类与抽象方法.md",
+    "成员内部类.md",
     "代码块.md",
     "内部类总览.md",
     "匿名内部类.md",
     "局部内部类.md",
     "API.md",
     "ArrayList.md",
-    "String类.md",
-    "StringBuilder.md",
-    "super关键字.md",
-    "面向对象基础.md",
-    "成员内部类.md",
-    "静态内部类.md",
-    "枚举类.md",
-    "get和set方法.md",
-    "继承.md",
-    "虚方法表.md",
-    "方法重写.md",
-    "欢迎.md"
+    "String类.md"
   ]
 }
