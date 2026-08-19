@@ -1145,7 +1145,7 @@ Thread的常用方法如图所示。
 
 ![](images/2026-08-18-14-01-27-image.png)
 
-ExecutorService的常用方法如图所示。
+ExecutorService的常用方法如图所示（我们前面用的是多态的形式去创建线程池，这里自然要看ThreadPoolExecutor其父的常用方法，而不是看ThreadPoolExecutor的常用方法）。
 
 ![](images/2026-08-18-14-03-08-image.png)
 
@@ -1153,6 +1153,37 @@ execute的用法如图所示。
 
 ![](images/2026-08-18-14-07-32-image.png)
 
-线程池的注意事项如图所示。
+线程池的注意事项如图所示。只有正式员工都在忙，并且排队座位也满了，才会招临时工。只有正式员工和临时工都在忙，并且排队座位也满了，才会拒绝新任务。
 
 ![](images/2026-08-18-16-59-49-image.png)
+
+当任务队列满了，核心线程都在忙，此时有新任务进来，会创建**非核心临时线程（救急线程），直接执行这个新来的任务**，不是拿队列里的旧任务。
+
+# Runnable任务 vs Callable任务
+
+## 核心区别
+
+表格
+
+| 特性  | Runnable                    | Callable<V>                     |
+| --- | --------------------------- | ------------------------------- |
+| 方法  | `void run()`                | `V call() throws Exception`     |
+| 返回值 | **无返回值 void**               | **有返回值 V**                      |
+| 异常  | run 不能抛出受检异常，只能内部 try‑catch | call**允许抛出 Exception 受检异常**     |
+| 包   | `java.lang.Runnable`        | `java.util.concurrent.Callable` |
+
+题外话：Runnable任务可以直接交给Thread线程执行，而Callable任务需要通过FutureTask包装一下才能交给Thread线程执行，FutureTask是Runnable的实现类。
+
+线程池如果要执行Callable任务，需要用`submit(Callable)`，其底层，也是帮我们 new 了`FutureTask`
+
+使用线程池处理Callable任务的示例代码如图所示，这里用f1去接，是多态的写法，我们说过，submit底层其实是帮我们new了FutureTask
+
+![](images/2026-08-19-09-32-58-image.png)
+
+我们还可以通过Executors去创建线程池，其常用方法如图所示
+
+![](images/2026-08-19-17-32-30-image.png)
+
+通过Executor创建线程池并执行Callable任务的示例代码如图所示。其实这个静态方法的底层还是用前面的ThreadPoolExecutor七参数去创建线程池。
+
+![](images/2026-08-19-18-11-38-image.png)
