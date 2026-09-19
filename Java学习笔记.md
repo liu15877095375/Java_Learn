@@ -1719,3 +1719,85 @@ JDBC就是一种JavaAPI，允许Java程序与数据库进行连接和交互，�
 ---
 
 综上所述，代理可以减少重复代码，可以赋予对象更多强大的功能
+
+---
+
+# Java 基础核心：Java 只有值传递
+
+这是 Java 入门后最容易混淆的基础知识点，也是面试高频题。结论先放前面：**Java 语言中只有值传递，没有引用传递**。
+
+## 一、什么是值传递？
+
+值传递（Pass by Value）：方法调用时，传入的是**实参的一份拷贝**，方法内对参数的修改，只会影响这个拷贝，不会影响外面的原始变量。
+
+与之对应的引用传递（Pass by Reference）：传入的是实参本身的内存地址，方法内修改参数会直接影响外部原始变量。
+
+## 二、两种参数类型的表现
+
+### 1. 基本数据类型作为参数
+
+基本类型（int、double、boolean 等）传递的是**数值的副本**，方法内修改完全不影响外部。
+
+```
+public class Test {
+    public static void change(int a) {
+        a = 100; // 修改的是副本
+        System.out.println("方法内a：" + a); // 100
+    }
+
+    public static void main(String[] args) {
+        int num = 10;
+        change(num);
+        System.out.println("方法外num：" + num); // 10，没变
+    }
+}
+```
+
+### 2. 引用数据类型作为参数
+
+引用类型（对象、数组等）传递的是**引用地址的副本**，也就是两个引用指向同一个堆内存对象。
+
+- 方法内通过引用修改对象的**属性**，外部会看到变化（因为对象是同一个）
+- 方法内让参数**指向新对象**，外部不会受影响（因为改的是副本引用）
+
+```
+public class Test {
+    // 修改对象属性
+    public static void changeAge(Person p) {
+        p.age = 20; // 通过地址修改同一个对象
+    }
+
+    // 让参数指向新对象
+    public static void changePerson(Person p) {
+        p = new Person("李四", 30); // 改的是副本引用的指向
+    }
+
+    public static void main(String[] args) {
+        Person person = new Person("张三", 10);
+
+        changeAge(person);
+        System.out.println(person.age); // 20，属性被改了
+
+        changePerson(person);
+        System.out.println(person.name); // 张三，指向没变
+    }
+}
+
+class Person {
+    String name;
+    int age;
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+```
+
+## 三、一句话总结
+
+不管是基本类型还是引用类型，Java 传的都是**副本**：
+
+- 基本类型：复制一份数值
+- 引用类型：复制一份地址
+
+所以本质上全都是值传递，只是引用类型复制的是地址值而已。
